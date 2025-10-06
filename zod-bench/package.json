@@ -1,0 +1,15 @@
+{
+  "name": "ai-sdk-startup-benchmark",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Benchmark AI SDK startup performance in Cloudflare Workers vs Node.js",
+  "scripts": {
+    "install:all": "pnpm install && cd cf && pnpm install && cd ../nodejs && pnpm install && cd ..",
+    "profile:cf": "cd cf && npx wrangler check startup && cd ..",
+    "profile:nodejs": "cd nodejs && pnpm check-startup && cd ..",
+    "profile:both": "pnpm profile:cf && pnpm profile:nodejs",
+    "analyze": "node analyze-profiles.js",
+    "benchmark": "pnpm profile:both && pnpm analyze"
+  }
+}

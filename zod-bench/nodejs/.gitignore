@@ -1,0 +1,8 @@
+node_modules
+*.cpuprofile
+*.log
+.env
+startup-summary.json
+dist/
+dist-esbuild/
+dist-rollup/
