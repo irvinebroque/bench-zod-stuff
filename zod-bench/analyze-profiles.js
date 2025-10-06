@@ -77,7 +77,6 @@ const nodejsProfile = analyzeProfile(
   'Node.js Express'
 );
 
-console.log('\n\n=== Comparison Summary ===');
 console.log(`\nCloudflare Worker:`);
 console.log(`  - Profile Duration: ${cfProfile.duration.toFixed(4)}ms`);
 console.log(`  - Nodes: ${cfProfile.nodes}`);
@@ -92,24 +91,3 @@ console.log(`\nProfile Size Comparison:`);
 console.log(`  - CF Profile is ${(cfProfile.duration / nodejsProfile.duration).toFixed(2)}x the duration`);
 console.log(`  - CF has ${(cfProfile.nodes / nodejsProfile.nodes).toFixed(2)}x the nodes`);
 console.log(`  - CF has ${(cfProfile.samples / nodejsProfile.samples).toFixed(2)}x the samples`);
-
-console.log('\n=== Analysis Complete ===');
-console.log('\nNext Steps:');
-console.log('1. Load the CPU profiles in Chrome DevTools to view flamegraphs:');
-console.log('   - Open chrome://inspect');
-console.log('   - Click "Open dedicated DevTools for Node"');
-console.log('   - Go to Profiler tab and click "Load"');
-console.log('   - Load cf/worker-startup.cpuprofile');
-console.log('   - Load nodejs/nodejs-startup.cpuprofile');
-console.log('');
-console.log('2. Look for:');
-console.log('   - Module resolution/loading time');
-console.log('   - AI SDK initialization overhead');
-console.log('   - esbuild bundling effects (CF)');
-console.log('   - Express initialization overhead (Node.js)');
-console.log('');
-console.log('3. Key areas to investigate:');
-console.log('   - Time spent in AI SDK imports');
-console.log('   - Zod schema validation overhead');
-console.log('   - Provider initialization');
-console.log('   - Runtime-specific overhead');
